@@ -1,0 +1,13 @@
+{
+    "name": "shiba-tv-api",
+    "version": "0.1.0",
+    "private": "true",
+    "scripts": {
+        "start": "node api/index.ts"
+    },
+    "dependencies": {
+        "@vercel/postgres": "^0.8.0",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2"
+    }
+}
