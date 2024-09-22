@@ -1,10 +1,12 @@
-require('dotenv').config();
+import { config } from 'dotenv';
+import express from 'express';
 
-const express = require('express');
+import channel from './api/channel';
+import video from './api/video';
+
 const app = express();
 
-const channel = require('./channel');
-const video = require('./video');
+config();
 
 app.get('/channels', channel.getAll);
 app.get('/video', video.getOne);
@@ -13,4 +15,4 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Server ready on port ${port}.`));
 
-module.exports = app;
+export default app;

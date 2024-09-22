@@ -1,6 +1,7 @@
-const { sql } = require('@vercel/postgres');
+import { QueryResultRow, sql } from '@vercel/postgres';
+import { Request, Response } from 'express';
 
-const parseChannel = (item) => ({
+const parseChannel = (item: QueryResultRow) => ({
     id: item.id,
     kind: `youtube#${item.kind}`,
     snippet: {
@@ -27,7 +28,7 @@ const parseChannel = (item) => ({
     },
 });
 
-const getAll = async (req, res) => {
+const getAll = async (req: Request, res: Response) => {
     try {
         const { rows: channels } = await sql`SELECT * FROM Channels;`;
 
@@ -44,6 +45,4 @@ const getAll = async (req, res) => {
     }
 };
 
-module.exports = {
-    getAll,
-};
+export default { getAll };
